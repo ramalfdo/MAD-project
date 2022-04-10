@@ -6,6 +6,8 @@
     android:layout_height="300dp"
     android:layout_marginLeft="55dp"
     android:layout_marginTop="200dp"
-    android:background="@drawable/logo">
+    android:background="@drawable/logo"
+    android:visibility="visible"
+    tools:visibility="visible">
 
 </androidx.constraintlayout.widget.ConstraintLayout>
