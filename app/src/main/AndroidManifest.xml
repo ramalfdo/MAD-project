@@ -5,25 +5,24 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="onlineshop"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.OnlineShop"
         >
-        <activity
-            android:name=".splashscreen"
-            android:theme="@style/splashScreen"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity android:name=".MainActivity"
-            android:theme="@style/Theme.OnlineShop">
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.OnlineShop"
+            android:exported="true">
+        <intent-filter>
+        <action android:name="android.intent.action.MAIN"/>
 
+        <category android:name="android.intent.category.LAUNCHER"/>
+        </intent-filter>
         </activity>
+        <activity android:name=".Splashscreen"></activity>
+
+
     </application>
 
 </manifest>
