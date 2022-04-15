@@ -1,9 +1,10 @@
-package com.example.onlineshop
+package com.example.onlineshop.Activities
 
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
+import com.example.onlineshop.R
 
 
 class SplashScreenActivity : AppCompatActivity() {
@@ -15,7 +16,7 @@ class SplashScreenActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash_screen)
 
         Handler().postDelayed( {
-            startActivity(Intent(this,MainActivity::class.java))
+            startActivity(Intent(this, Login::class.java))
             finish()
         }, SPLASH_TIME)
 
