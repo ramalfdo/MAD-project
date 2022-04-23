@@ -11,6 +11,8 @@ import android.text.TextUtils
 import android.view.WindowInsets
 import android.view.WindowManager
 import com.example.onlineshop.R
+import com.example.onlineshop.firestore.FirestoreClass
+import com.example.onlineshop.models.User
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
@@ -105,21 +107,39 @@ class Register : BaseActivity() {
                 .addOnCompleteListener(
                     OnCompleteListener<AuthResult>{ task->
 
-                        hideProgressDialog()
 
                         if (task.isSuccessful){
                             val firebaseUser:FirebaseUser = task.result!!.user!!
-                            showErrorSnackBar("you are registered successfully. your user id is ${firebaseUser.uid} ",false)
 
-                            FirebaseAuth.getInstance().signOut()
-                            finish()
+                            val user = User(
+                                firebaseUser.uid,
+                                et_first_name.text.toString().trim{it<=' '},
+                                et_last_name.text.toString().trim{it<=' '},
+                                et_email.text.toString().trim{it<=' '},
+                            )
+
+                           // showErrorSnackBar("you are registered successfully. your user id is ${firebaseUser.uid} ",false)
+
+                            FirestoreClass().registerUser(this@Register,user)
+
+                            //FirebaseAuth.getInstance().signOut()
+                            //finish()
 
                         }
                         else{
+                            hideProgressDialog()
                             showErrorSnackBar(task.exception!!.message.toString(),true)
                         }
                     }
                 )
         }
+    }
+
+    fun userRegistrationSuccess(){
+        hideProgressDialog()
+        Toast.makeText(
+            this@Register,resources.getString(R.string.registry_successful),
+            Toast.LENGTH_SHORT
+        ).show()
     }
 }
