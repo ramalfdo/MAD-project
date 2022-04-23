@@ -39,38 +39,53 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_firstname"
+                android:id="@+id/til_scrole"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="16dp"
-                android:hint="@string/hint_first_name"
                 android:textColorHint="@color/green"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintEnd_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/et_first_name"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_firstname"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:inputType="text"
-                    android:padding="@dimen/et_padding"
-                    android:textColor="@color/green"
-                    android:textSize="@dimen/et_textSize"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="16dp"
+                    android:hint="@string/hint_first_name"
+                    android:textColorHint="@color/green"
+                    app:boxBackgroundColor="#FFDEEFED"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/et_first_name">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/et_first_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:inputType="text"
+                        android:padding="@dimen/et_padding"
+                        android:textColor="@color/green"
+                        android:textSize="@dimen/et_textSize" />
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/til_last_name"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="379dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="1dp"
+                    android:layout_marginStart="12dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="16dp"
                     android:hint="@string/hint_last_name"
                     android:textColorHint="@color/green"
+                    app:boxBackgroundColor="#FFDEEFED"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintEnd_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@id/et_first_name">
@@ -78,7 +93,7 @@
                     <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/et_last_name"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:inputType="text"
                         android:padding="@dimen/et_padding"
                         android:textColor="@color/green"
@@ -88,13 +103,14 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/til_email"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="379dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="1dp"
+                    android:layout_marginStart="12dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="16dp"
                     android:hint="@string/et_hint_email_id"
                     android:textColorHint="@color/green"
+                    app:boxBackgroundColor="#FFDEEFED"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintEnd_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@id/et_last_name">
@@ -102,7 +118,7 @@
                     <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/et_email"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:inputType="text"
                         android:padding="@dimen/et_padding"
                         android:textColor="@color/green"
@@ -112,13 +128,14 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/til_password"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="379dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="1dp"
+                    android:layout_marginStart="12dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="16dp"
                     android:hint="@string/et_hint_password"
                     android:textColorHint="@color/green"
+                    app:boxBackgroundColor="#FFDEEFED"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintEnd_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@id/et_email">
@@ -126,7 +143,7 @@
                     <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/et_password"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:inputType="text"
                         android:padding="@dimen/et_padding"
                         android:textColor="@color/green"
@@ -136,13 +153,14 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/til_confirm_password"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="379dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="1dp"
+                    android:layout_marginStart="12dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="16dp"
                     android:hint="@string/et_hint_confirm_password"
                     android:textColorHint="@color/green"
+                    app:boxBackgroundColor="#FFDEEFED"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintEnd_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@id/et_password">
@@ -150,7 +168,7 @@
                     <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/et_confirm_password"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:inputType="text"
                         android:padding="@dimen/et_padding"
                         android:textColor="@color/green"
@@ -171,7 +189,9 @@
                         android:id="@id/terms_and_condition"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        tools:checked="false"/>
+                        tools:checked="false"
+
+                        />
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_terms_condition"
                     android:layout_width="wrap_content"
@@ -183,7 +203,6 @@
                 </LinearLayout>
 
                 <androidx.appcompat.widget.AppCompatButton
-
                     android:id="@+id/btn_register"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -205,7 +224,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="52dp"
                     android:layout_marginTop="5dp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
@@ -215,24 +234,24 @@
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tv_all_ready_have_an_account"
-                        android:layout_width="200dp"
-                        android:layout_height="35dp"
+                        android:layout_width="226dp"
+                        android:layout_height="52dp"
                         android:layout_margin="16dp"
                         android:linksClickable="true"
                         android:longClickable="true"
                         android:padding="@dimen/clickable_text_view_padding"
-                        android:text="@string/don_t_have_an_account"
+                        android:text="@string/already_have_an_account"
                         android:textColor="@color/green"
                         android:textSize="@dimen/lbl_text_view_textSize" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/login"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="61dp"
+                        android:layout_height="52dp"
                         android:layout_marginEnd="16dp"
-                        android:layout_marginRight="@dimen/et_textSize"
                         android:linksClickable="true"
                         android:longClickable="true"
+                        android:minHeight="48dp"
                         android:padding="@dimen/clickable_text_view_padding"
                         android:text="@string/login"
                         android:textColor="@color/green"

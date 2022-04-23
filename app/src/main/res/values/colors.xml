@@ -12,4 +12,7 @@
     <color name="darkgreen">#0E3A37</color>
     <color name="green">#1e5154</color>
     <color name="textboxcolor">#DEEFED</color>
+
+    <color name="colorSnackBarsuccess">#8BC34A</color>
+    <color name="colorSnackBarError">#F72400</color>
 </resources>
