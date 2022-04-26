@@ -35,4 +35,16 @@
     <string name="btn_lbl_submit">Submit</string>
 
     <string name="email_sent_success">\"Email sent successfully to reset the password</string>
+    <string name="register_success">You are registered successfully</string>
+
+    <string name="title_complete_profile">PROFILE</string>
+    <string name="et_hint_mobile_number">Mobile Number</string>
+    <string name="rb_lbl_male">MALE</string>
+    <string name="rb_lbl_female">FEMALE</string>
+    <string name="rb_lbl_save">Save</string>
+
+    <string name="read_storage_permission_denied">Oops, you just denid the permission for storage.you can also allow it from setting. </string>
+
+    <string name="image_selection_failed">Image selection Failed!..</string>
+
 </resources>

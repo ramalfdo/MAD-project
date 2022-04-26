@@ -5,10 +5,14 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import com.example.onlineshop.R
+import com.example.onlineshop.firestore.FirestoreClass
+import com.example.onlineshop.models.User
+import com.example.onlineshop.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
 import io.grpc.InternalChannelz.id
 import kotlinx.android.synthetic.main.activity_login.*
@@ -37,6 +41,25 @@ class Login : BaseActivity(),View.OnClickListener {
             startActivity(intent)
 
         }*/
+    }
+
+    fun userLoggedInSuccess(user:User){
+        hideProgressDialog()
+        Log.i("First Name: ",user.firstName)
+        Log.i("Last Name: ",user.lastname)
+        Log.i("Email: ",user.email)
+
+        if (user.profileCompleted==0){
+            val intent=Intent(this@Login,UserProfile::class.java)
+            intent.putExtra(Constants.EXTRA_USER_DETAILS,user)
+            startActivity(intent)
+        }
+        else{
+            startActivity(Intent(this@Login,Main::class.java))
+        }
+
+        //startActivity(Intent(this@Login,Main::class.java))
+        finish()
     }
 
     override fun onClick(View:View?){
@@ -85,11 +108,13 @@ class Login : BaseActivity(),View.OnClickListener {
 
             FirebaseAuth.getInstance().signInWithEmailAndPassword(email,password)
                 .addOnCompleteListener{ task->
-                    hideProgressDialog()
+                    //hideProgressDialog()
                     if (task.isSuccessful){
-                        showErrorSnackBar("you are logged in successfully",false)
+                        FirestoreClass().getUserDetails(this@Login)
+                        //showErrorSnackBar("you are logged in successfully",false)
                     }
                     else{
+                        hideProgressDialog()
                         showErrorSnackBar(task.exception!!.message.toString(),true)
                     }
                 }
