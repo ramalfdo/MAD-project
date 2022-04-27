@@ -11,11 +11,17 @@
         <entry key="..\:/nsbm2/my apps/app 2/app/src/main/res/drawable/drawble_gender_tab_text_color_selector.xml" value="0.1" />
         <entry key="..\:/nsbm2/my apps/app 2/app/src/main/res/drawable/ic_baseline_add_shopping_cart_24.xml" value="0.244" />
         <entry key="..\:/nsbm2/my apps/app 2/app/src/main/res/drawable/ic_baseline_shopping_bag_24.xml" value="0.1" />
+        <entry key="..\:/nsbm2/my apps/app 2/app/src/main/res/drawable/ic_black_color_back_24.xml" value="0.2245" />
         <entry key="..\:/nsbm2/my apps/app 2/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.225" />
         <entry key="..\:/nsbm2/my apps/app 2/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.225" />
         <entry key="..\:/nsbm2/my apps/app 2/app/src/main/res/drawable/ic_launcher_background.xml" value="0.205" />
         <entry key="..\:/nsbm2/my apps/app 2/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.205" />
         <entry key="..\:/nsbm2/my apps/app 2/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.225" />
+        <entry key="..\:/nsbm2/my apps/app 2/app/src/main/res/drawable/ic_vector_dashboard.xml" value="0.1" />
+        <entry key="..\:/nsbm2/my apps/app 2/app/src/main/res/drawable/ic_vector_orders.xml" value="0.1" />
+        <entry key="..\:/nsbm2/my apps/app 2/app/src/main/res/drawable/ic_vector_products.xml" value="0.1" />
+        <entry key="..\:/nsbm2/my apps/app 2/app/src/main/res/drawable/ic_vector_settings.xml" value="0.1" />
+        <entry key="..\:/nsbm2/my apps/app 2/app/src/main/res/drawable/item_grey_border_background.xml" value="0.1" />
         <entry key="..\:/nsbm2/my apps/app 2/app/src/main/res/drawable/user_image_background.xml" value="0.1" />
         <entry key="..\:/nsbm2/my apps/app 2/app/src/main/res/layout-v23/activity_forgot_password.xml" value="0.1" />
         <entry key="..\:/nsbm2/my apps/app 2/app/src/main/res/layout-v23/activity_login.xml" value="0.18518518518518517" />
@@ -28,6 +34,7 @@
         <entry key="..\:/nsbm2/my apps/app 2/app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="..\:/nsbm2/my apps/app 2/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/nsbm2/my apps/app 2/app/src/main/res/layout/activity_register.xml" value="0.2" />
+        <entry key="..\:/nsbm2/my apps/app 2/app/src/main/res/layout/activity_settings.xml" value="0.1" />
         <entry key="..\:/nsbm2/my apps/app 2/app/src/main/res/layout/activity_splash.xml" value="0.1" />
         <entry key="..\:/nsbm2/my apps/app 2/app/src/main/res/layout/activity_splash_screen.xml" value="0.2318840579710145" />
         <entry key="..\:/nsbm2/my apps/app 2/app/src/main/res/layout/activity_splashactivity.xml" value="0.16" />
@@ -36,8 +43,12 @@
         <entry key="..\:/nsbm2/my apps/app 2/app/src/main/res/layout/fragment_dashboard.xml" value="0.21822916666666667" />
         <entry key="..\:/nsbm2/my apps/app 2/app/src/main/res/layout/fragment_home.xml" value="0.21822916666666667" />
         <entry key="..\:/nsbm2/my apps/app 2/app/src/main/res/layout/fragment_notifications.xml" value="0.21822916666666667" />
+        <entry key="..\:/nsbm2/my apps/app 2/app/src/main/res/layout/fragment_orders.xml" value="0.21822916666666667" />
+        <entry key="..\:/nsbm2/my apps/app 2/app/src/main/res/layout/fragment_products.xml" value="0.21822916666666667" />
         <entry key="..\:/nsbm2/my apps/app 2/app/src/main/res/layout/login.xml" value="0.264" />
         <entry key="..\:/nsbm2/my apps/app 2/app/src/main/res/layout/main.xml" value="0.1" />
+        <entry key="..\:/nsbm2/my apps/app 2/app/src/main/res/menu/bottom_nav_menu.xml" value="0.264" />
+        <entry key="..\:/nsbm2/my apps/app 2/app/src/main/res/menu/dashboard_menu.xml" value="0.1" />
         <entry key="..\:/nsbm2/my apps/app 2/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1085" />
         <entry key="..\:/nsbm2/my apps/app 2/app/src/main/res/mipmap-anydpi-v26/online shop.xml" value="0.132" />
       </map>

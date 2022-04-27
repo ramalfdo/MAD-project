@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.ui.notifications.NotificationsFragment">
+    android:background="#EDFFEE"
+    tools:context=".Activities.ui.fragments.OrdersFragment">
 
     <TextView
         android:id="@+id/text_notifications"

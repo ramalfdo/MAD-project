@@ -10,7 +10,7 @@ import com.example.onlineshop.R
 import com.example.onlineshop.databinding.ActivityDashboardBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class Dashboard : AppCompatActivity() {
+class Dashboard : BaseActivity() {
 
     private lateinit var binding: ActivityDashboardBinding
 
@@ -26,8 +26,13 @@ class Dashboard : AppCompatActivity() {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(setOf(
-            R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications))
+            R.id.navigation_products, R.id.navigation_dashboard, R.id.navigation_orders))
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
+
+    override fun onBackPressed(){
+        doubleBackToExit()
+    }
+
 }
