@@ -57,7 +57,7 @@ class Login : BaseActivity(),View.OnClickListener {
             startActivity(intent)
         }
         else{
-            startActivity(Intent(this@Login,Main::class.java))
+            startActivity(Intent(this@Login,Dashboard::class.java))
         }
 
         //startActivity(Intent(this@Login,Main::class.java))
