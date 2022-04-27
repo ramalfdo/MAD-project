@@ -230,7 +230,7 @@
                 android:gravity="center"
                 android:paddingTop="@dimen/btn_padding"
                 android:paddingBottom="@dimen/btn_padding"
-                android:text="@string/btn_lbl_login"
+                android:text="@string/btn_lbl_submit"
                 android:textColor="@color/white"
                 android:textSize="@dimen/btn_text_Size"
                 app:layout_constraintBottom_toBottomOf="parent"
