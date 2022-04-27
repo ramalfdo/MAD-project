@@ -6,10 +6,7 @@ import android.content.SharedPreferences
 import android.media.session.MediaSessionManager
 import android.net.Uri
 import android.util.Log
-import com.example.onlineshop.Activities.BaseActivity
-import com.example.onlineshop.Activities.Login
-import com.example.onlineshop.Activities.Register
-import com.example.onlineshop.Activities.UserProfile
+import com.example.onlineshop.Activities.*
 import com.example.onlineshop.models.User
 import com.example.onlineshop.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
@@ -73,6 +70,10 @@ class FirestoreClass {
                     is Login->{
                         activity.userLoggedInSuccess(user)
                     }
+                    is Settings ->{
+
+                        activity.userDetailsSuccess(user)
+                    }
                 }
             }
     }
@@ -87,11 +88,15 @@ class FirestoreClass {
                     is UserProfile -> {
                         activity.userProfileUpdateSuccess()
                     }
+
                 }
             }
             .addOnFailureListener{e->
-                when(activity){
-                    is UserProfile -> {
+                when(activity){//in here i change UserProfile as Login
+                    is Login -> {
+                        activity.hideProgressDialog()
+                    }
+                    is Settings->{
                         activity.hideProgressDialog()
                     }
                 }
