@@ -7,38 +7,44 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="onlineshop"
+        android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.OnlineShop">
+
         <activity
-            android:name=".Activities.Settings"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppThemeNoActionBar"
-            android:exported="false" />
+            android:name=".activity.activity.Settings"
+            android:exported="false"
+            android:theme="@style/Theme.OnlineShop.NoActionBar" />
         <activity
-            android:name=".Activities.Dashboard"
+            android:name=".activity.activity.Dashboard"
             android:exported="false"
             android:label="@string/app_name" />
         <activity
-            android:name=".Activities.UserProfile"
+            android:name=".activity.activity.UserProfile"
+            android:exported="false"
+            android:theme="@style/Theme.OnlineShop.NoActionBar" />
+        <activity
+            android:name=".activity.activity.ForgotPassword"
+            android:exported="false"
+            android:theme="@style/Theme.OnlineShop.NoActionBar" />
+        <activity
+            android:name=".activity.activity.BaseActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.ForgotPassword"
-            android:exported="false" />
+            android:name=".activity.activity.Register"
+            android:exported="false"
+            android:theme="@style/Theme.OnlineShop.NoActionBar" />
         <activity
-            android:name=".Activities.BaseActivity"
-            android:exported="false" />
+            android:name=".activity.activity.Login"
+            android:exported="false"
+            android:theme="@style/Theme.OnlineShop.NoActionBar" />
         <activity
-            android:name=".Activities.Register"
-            android:exported="false" />
+            android:name=".activity.activity.Main"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name=".Activities.Login"
-            android:exported="false" />
-
-
-        <activity
-            android:name=".Activities.SplashScreenActivity"
+            android:name=".activity.activity.Splashscreen"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
@@ -47,10 +53,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Activities.Main"
-            android:exported="true"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
     </application>
 
 </manifest>
