@@ -1,13 +1,10 @@
-package com.example.onlineshop.Activities
+package com.example.onlineshop.activity.activity
 
 import android.app.Dialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.os.Message
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.content.ContextCompat
 import com.example.onlineshop.R
 import com.google.android.material.snackbar.Snackbar
@@ -19,7 +16,7 @@ open class BaseActivity : AppCompatActivity() {
     private lateinit var mProgressDialog: Dialog
 
     fun showErrorSnackBar(message: String,errorMessage: Boolean){
-        val snackBar = Snackbar.make(findViewById(android.R.id.content),message,Snackbar.LENGTH_LONG)
+        val snackBar = Snackbar.make(findViewById(android.R.id.content),message, Snackbar.LENGTH_LONG)
         val snackBarView=snackBar.view
         if(errorMessage){
             snackBarView.setBackgroundColor(
@@ -48,7 +45,6 @@ open class BaseActivity : AppCompatActivity() {
         mProgressDialog.setCanceledOnTouchOutside(false)
         mProgressDialog.show()
     }
-
     fun hideProgressDialog(){
         mProgressDialog.dismiss()
     }
@@ -60,10 +56,9 @@ open class BaseActivity : AppCompatActivity() {
         }
         this.doubleBackToExitPressedOnce = true
         Toast.makeText(this,resources.getString(R.string.please_click_back_again_to_exit),
-        Toast.LENGTH_SHORT).show()
+            Toast.LENGTH_SHORT).show()
 
         @Suppress("DEPRECATION")
         Handler().postDelayed({doubleBackToExitPressedOnce=false},2000)
     }
-
 }

@@ -1,24 +1,19 @@
-package com.example.onlineshop.Activities
+package com.example.onlineshop.activity.activity
 
-import android.content.Intent
 import android.os.Build
-import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
-import android.widget.CheckBox
-import android.widget.Toast
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.WindowInsets
 import android.view.WindowManager
+import android.widget.Toast
 import com.example.onlineshop.R
-import com.example.onlineshop.firestore.FirestoreClass
-import com.example.onlineshop.models.User
+import com.example.onlineshop.activity.firestore.FirestoreClass
+import com.example.onlineshop.activity.models.User
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.activity_register.*
-
 
 class Register : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,28 +21,28 @@ class Register : BaseActivity() {
         setContentView(R.layout.activity_register)
 
         @Suppress("DEPRECATION")
-        if (Build.VERSION.SDK_INT>= Build.VERSION_CODES.R){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             window.insetsController?.hide(WindowInsets.Type.statusBars())
-        }else{
+        } else {
             window.setFlags(
                 WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN
             )
         }
-        /*setupActionBar()*/
+        setupActionBar()
 
-        login.setOnClickListener {
+        tv_login.setOnClickListener {
+            //val intent = Intent(this@Register, Login::class.java)
+            //startActivity(intent)
             onBackPressed()
-            /*val intent = Intent(this@Register, Login::class.java)
-            startActivity(intent)*/
-
         }
         btn_register.setOnClickListener{
             registerUser()
+            //validateRegisterDetails()
         }
     }
 
-    /*private fun setupActionBar() {
+    private fun setupActionBar() {
         setSupportActionBar(toolbar_register_activity)
         val actionbar = supportActionBar
         if(actionbar != null){
@@ -56,7 +51,7 @@ class Register : BaseActivity() {
         }
         toolbar_register_activity.setNavigationOnClickListener{onBackPressed()}
 
-    }*/
+    }
 
     private fun validateRegisterDetails():Boolean{
         return when {
@@ -64,7 +59,7 @@ class Register : BaseActivity() {
                 showErrorSnackBar(resources.getString(R.string.err_msg_enter_first_name), true)
                 false
             }
-            TextUtils.isEmpty(et_last_name.text.toString().trim { it <= ' ' }) || et_last_name.length()<=4 -> {
+            TextUtils.isEmpty(et_last_name.text.toString().trim { it <= ' ' })  -> {
                 showErrorSnackBar(resources.getString(R.string.err_msg_enter_last_name), true)
                 false
             }
@@ -84,13 +79,13 @@ class Register : BaseActivity() {
                 .trim{ it <=' '} -> {
                 showErrorSnackBar(resources.getString(R.string.err_msg_password_and_confirm_password_mismatch), true)
                 false
-                }
-            tv_terms_condition.isActivated -> {
+            }
+            terms_and_condition.isActivated-> {
                 showErrorSnackBar(resources.getString(R.string.err_msg_agree_terms_and_condition), true)
                 false
             }
             else ->{
-                //showErrorSnackBar(resources.getString(R.string.registry_successfull),false)
+                //showErrorSnackBar(resources.getString(R.string.registry_successful),false)
                 true
             }
         }
@@ -107,23 +102,31 @@ class Register : BaseActivity() {
                 .addOnCompleteListener(
                     OnCompleteListener<AuthResult>{ task->
 
-
                         if (task.isSuccessful){
-                            val firebaseUser:FirebaseUser = task.result!!.user!!
+                            val firebaseUser: FirebaseUser = task.result!!.user!!
 
-                            val user = User(
+                            val user=User(
                                 firebaseUser.uid,
                                 et_first_name.text.toString().trim{it<=' '},
                                 et_last_name.text.toString().trim{it<=' '},
                                 et_email.text.toString().trim{it<=' '},
                             )
 
-                           // showErrorSnackBar("you are registered successfully. your user id is ${firebaseUser.uid} ",false)
+                            /*val user = User(
+                                firebaseUser.uid,
+                                et_first_name.text.toString().trim{it<=' '},
+                                et_last_name.text.toString().trim{it<=' '},
+                                et_email.text.toString().trim{it<=' '},
+                            )*/
+
+
+
+                            //showErrorSnackBar("you are registered successfully. your user id is ${firebaseUser.uid} ",false)
 
                             FirestoreClass().registerUser(this@Register,user)
 
                             //FirebaseAuth.getInstance().signOut()
-                            //finish()
+                            // finish()
 
                         }
                         else{
@@ -134,7 +137,6 @@ class Register : BaseActivity() {
                 )
         }
     }
-
     fun userRegistrationSuccess(){
         hideProgressDialog()
         Toast.makeText(

@@ -4,11 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EDFFEE"
-    tools:context=".Activities.ui.fragments.OrdersFragment">
+    tools:context=".activity.activity.ui.fregments.OrdersFragment">
 
     <TextView
-        android:id="@+id/text_notifications"
+        android:id="@+id/text_Orders"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

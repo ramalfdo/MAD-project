@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EDFFEE"
+    android:background="@color/background"
     android:fillViewport="true"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    tools:context=".Activities.Settings">
+    tools:context=".activity.activity.Settings">
+
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -100,7 +101,7 @@
             android:textColor="@color/colorDarkGrey"
             android:textSize="@dimen/settings_name_textSize"
             android:textStyle="bold"
-            tools:text="Denis panjuta" />
+            tools:text="Duvindu Nishad" />
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_gender"
             android:layout_width="wrap_content"
@@ -121,7 +122,7 @@
             android:layout_marginTop="@dimen/settings_info_marginTop"
             android:textColor="@color/green"
             android:textSize="@dimen/settings_info_textSize"
-            tools:text="denis.panjut@gmail.com"/>
+            tools:text="nishad@gmail.com" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_mobile_number"
@@ -132,7 +133,7 @@
             android:layout_marginTop="@dimen/settings_info_marginTop"
             android:textColor="@color/green"
             android:textSize="@dimen/settings_info_textSize"
-            tools:text="0781234567"/>
+            tools:text="0781234567" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_address"
@@ -162,14 +163,15 @@
                 android:layout_weight="1"
                 android:text="@string/lbl_address"
                 android:textColor="@color/green"
-                android:textSize="@dimen/settings_lbl_address_textSize"/>
+                android:textSize="@dimen/settings_lbl_address_textSize" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/content_description"
-                android:src="@drawable/ic_vector_chevron_right"/>
+                android:src="@drawable/ic_vector_chevron_right" />
         </LinearLayout>
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_logout"
             android:layout_width="match_parent"
@@ -190,4 +192,5 @@
             android:textSize="@dimen/btn_text_Size" />
 
     </RelativeLayout>
+
 </ScrollView>

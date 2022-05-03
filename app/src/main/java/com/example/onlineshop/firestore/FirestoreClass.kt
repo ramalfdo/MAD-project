@@ -1,25 +1,26 @@
-package com.example.onlineshop.firestore
-
+package com.example.onlineshop.activity.firestore
 import android.app.Activity
 import android.content.Context
 import android.content.SharedPreferences
-import android.media.session.MediaSessionManager
+import android.media.audiofx.BassBoost
 import android.net.Uri
 import android.util.Log
-import com.example.onlineshop.Activities.*
-import com.example.onlineshop.models.User
-import com.example.onlineshop.utils.Constants
+import com.example.onlineshop.activity.activity.Login
+import com.example.onlineshop.activity.activity.Register
+import com.example.onlineshop.activity.activity.Settings
+import com.example.onlineshop.activity.activity.UserProfile
+import com.example.onlineshop.activity.models.User
+import com.example.onlineshop.activity.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import com.google.firestore.v1.FirestoreGrpc
 
 class FirestoreClass {
     private val mFirestore=FirebaseFirestore.getInstance()
 
-    fun registerUser(activity: Register,userInfo: User){
+    fun registerUser(activity: Register, userInfo: User){
         mFirestore.collection(Constants.USERS)//collection name
             .document(userInfo.id)//document for user id
             .set(userInfo, SetOptions.merge())
@@ -27,7 +28,7 @@ class FirestoreClass {
                 activity.userRegistrationSuccess()
             }
             .addOnFailureListener{
-                e-> activity.hideProgressDialog()
+                    e-> activity.hideProgressDialog()
                 Log.e(
                     activity.javaClass.simpleName,
                     "Error while register the user.",e
@@ -35,14 +36,16 @@ class FirestoreClass {
             }
 
     }
+
     fun getCurrentUserID():String{
-        val currentUser=FirebaseAuth.getInstance().currentUser
+        val currentUser= FirebaseAuth.getInstance().currentUser
         var currentUserID=""
         if(currentUser!=null){
             currentUserID=currentUser.uid
         }
         return currentUserID
     }
+
     fun getUserDetails(activity: Activity){
         mFirestore.collection((Constants.USERS))
             .document(getCurrentUserID())
@@ -64,10 +67,11 @@ class FirestoreClass {
                     Constants.LOGGED_IN_USERNAME,
                     "${user.firstName}${user.lastname}"
                 )
+
                 editor.apply()
                 //pass results to the login activity
                 when(activity){
-                    is Login->{
+                    is Login ->{
                         activity.userLoggedInSuccess(user)
                     }
                     is Settings ->{
@@ -75,21 +79,7 @@ class FirestoreClass {
                         activity.userDetailsSuccess(user)
                     }
                 }
-            }
-    }
 
-    fun updateUserProfileData(activity: Activity,userHashMap: HashMap<String, Any>) {
-
-        mFirestore.collection(Constants.USERS)
-            .document(getCurrentUserID())
-            .update(userHashMap)
-            .addOnSuccessListener {
-                when(activity){
-                    is UserProfile -> {
-                        activity.userProfileUpdateSuccess()
-                    }
-
-                }
             }
             .addOnFailureListener{e->
                 when(activity){//in here i change UserProfile as Login
@@ -99,6 +89,35 @@ class FirestoreClass {
                     is Settings->{
                         activity.hideProgressDialog()
                     }
+                    //  is BassBoost.Settings ->{
+                    //     activity.hideProgressDialog()
+                }
+                Log.e(activity.javaClass.simpleName,"error while user details.",e
+                )
+            }
+    }
+
+    fun updateUserProfileData(activity: Activity,userHashMap: HashMap<String, Any>) {
+
+        mFirestore.collection(Constants.USERS)
+            .document(getCurrentUserID())
+            .update(userHashMap)
+            .addOnSuccessListener {
+                when(activity){//in here i change UserProfile as Login
+                    is UserProfile -> {
+                        activity.userProfileUpdateSuccess()
+                    }
+                    //  is BassBoost.Settings ->{
+                    //     activity.hideProgressDialog()
+                }
+            }
+            .addOnFailureListener{e->
+                when(activity){//in here i change UserProfile as Login
+                    is UserProfile -> {
+                        activity.hideProgressDialog()
+                    }
+                    //  is BassBoost.Settings ->{
+                    //     activity.hideProgressDialog()
                 }
                 Log.e(activity.javaClass.simpleName,"error while user details.",e
                 )
@@ -107,14 +126,14 @@ class FirestoreClass {
 
     fun uploadImageToCloudStorage(activity:Activity,imageFileURI: Uri?){
 
-        val sRef: StorageReference =FirebaseStorage.getInstance().reference.child(
+        val sRef: StorageReference = FirebaseStorage.getInstance().reference.child(
             Constants.USER_PROFILE_IMAGE + System.currentTimeMillis() + "." + Constants.getFileExtension(activity,imageFileURI
             )
         )
         sRef.putFile(imageFileURI!!).addOnSuccessListener {
-            taskSnapshot->
+                taskSnapshot->
             Log.e("Firebase Image URL",
-            taskSnapshot.metadata!!.reference!!.downloadUrl.toString()
+                taskSnapshot.metadata!!.reference!!.downloadUrl.toString()
             )
             taskSnapshot.metadata!!.reference!!.downloadUrl
                 .addOnSuccessListener { uri -> Log.e("Downloadable Image URL",uri.toString())
@@ -127,7 +146,7 @@ class FirestoreClass {
                 }
         }
             .addOnFailureListener{ //hide the progress bar and print the error in log.
-                exception->
+                    exception->
                 when(activity){
                     is UserProfile->{
                         activity.hideProgressDialog()
@@ -140,5 +159,4 @@ class FirestoreClass {
                 )
             }
     }
-
 }

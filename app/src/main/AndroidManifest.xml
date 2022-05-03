@@ -35,6 +35,8 @@
         <activity
             android:name=".Activities.Login"
             android:exported="false" />
+
+
         <activity
             android:name=".Activities.SplashScreenActivity"
             android:exported="true"

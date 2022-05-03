@@ -1,4 +1,4 @@
-package com.example.onlineshop.Activities
+package com.example.onlineshop.activity.activity
 
 import android.Manifest.permission.READ_EXTERNAL_STORAGE
 import android.app.Activity
@@ -14,41 +14,87 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.onlineshop.R
-import com.example.onlineshop.firestore.FirestoreClass
-import com.example.onlineshop.models.User
-import com.example.onlineshop.utils.Constants
-import com.example.onlineshop.utils.GlideLoader
+import com.example.onlineshop.activity.firestore.FirestoreClass
+import com.example.onlineshop.activity.models.User
+import com.example.onlineshop.activity.utils.Constants
+import com.example.onlineshop.activity.utils.GlideLoader
+import kotlinx.android.synthetic.main.activity_register.*
+//import com.example.onlineshop.firestore.FirestoreClass
+//import com.example.onlineshop.models.User
+//import com.example.onlineshop.utils.Constants
+//import com.example.onlineshop.utils.GlideLoader
 import kotlinx.android.synthetic.main.activity_user_profile.*
+import kotlinx.android.synthetic.main.activity_user_profile.et_email
+import kotlinx.android.synthetic.main.activity_user_profile.et_first_name
+import kotlinx.android.synthetic.main.activity_user_profile.et_last_name
 import java.io.IOException
 import java.util.jar.Manifest
+import kotlinx.android.synthetic.main.activity_user_profile.tv_title as tv_title1
 
-class UserProfile : BaseActivity(), View.OnClickListener {
 
-    private lateinit var mUserDetails: User
+class UserProfile : BaseActivity(),View.OnClickListener {
 
-    private var mSelectedImageFileUri: Uri? =  null
-    private var mUserProfileImageURL:String=""
+    private  lateinit var mUserDetails: User
+    private var mSelectedImageFileUri: Uri? = null
+    private var mUserProfileImageURL: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_profile)
 
+
         if(intent.hasExtra(Constants.EXTRA_USER_DETAILS)){
             mUserDetails=intent.getParcelableExtra(Constants.EXTRA_USER_DETAILS)!!
         }
 
-        et_first_name.isEnabled=false
         et_first_name.setText(mUserDetails.firstName)
-
-        et_last_name.isEnabled=false
         et_last_name.setText(mUserDetails.lastname)
-
         et_email.isEnabled=false
         et_email.setText(mUserDetails.email)
+
+        if (mUserDetails.profileCompleted==0){
+            tv_title.text = resources.getString(R.string.title_complete_profile)
+
+            et_first_name.isEnabled=false
+            //et_first_name.setText(mUserDetails.firstName)
+
+            et_last_name.isEnabled=false
+            //et_last_name.setText(mUserDetails.lastname)
+
+
+        }else{
+            setupActionBar()
+            tv_title.text = resources.getString(R.string.title_edit_profile)
+            GlideLoader(this@UserProfile).loadUserPicture(mUserDetails.image,iv_user_photo)
+
+            et_email.isEnabled=false
+            et_email.setText(mUserDetails.email)
+            if (mUserDetails.mobile !=0L){
+                et_mobile_number.setText(mUserDetails.mobile.toString())
+            }
+            if (mUserDetails.gender == Constants.MALE){
+                rb_male.isChecked = true
+            }
+            else{
+                rb_female.isChecked = true
+            }
+
+        }
 
         iv_user_photo.setOnClickListener(this@UserProfile)
 
         btn_submit.setOnClickListener(this@UserProfile)
+    }
+
+    private fun setupActionBar() {
+        setSupportActionBar(toolbar_user_profile_activity)
+        val actionbar = supportActionBar
+        if(actionbar != null){
+            actionbar.setDisplayHomeAsUpEnabled(true)
+            actionbar.setHomeAsUpIndicator(R.drawable.ic_white_back_24dp)
+        }
+        toolbar_user_profile_activity.setNavigationOnClickListener{onBackPressed()}
+
     }
 
     override fun onClick(View: View?) {
@@ -67,27 +113,44 @@ class UserProfile : BaseActivity(), View.OnClickListener {
 
                 R.id.btn_submit -> {
 
-
                     if (validateUserProfileDetails()){
 
                         showProgressDialog(resources.getString(R.string.please_wait))
-
-                        if(mSelectedImageFileUri != null)
-
+                        if (mSelectedImageFileUri != null)
                             FirestoreClass().uploadImageToCloudStorage(this,mSelectedImageFileUri)
-
                         else{
                             updateUserProfileDetails()
                         }
+
+                        //showProgressDialog(resources.getString(R.string.please_wait))
+
+                        //if(mSelectedImageFileUri != null)
+
+                        //    FirestoreClass().uploadImageToCloudStorage(this,mSelectedImageFileUri)
+
+                        //else{
+                        //    updateUserProfileDetails()
+                        //}
                         //showErrorSnackBar("your details are valid. you can update them.",false)
                     }
                 }
+
             }
         }
     }
     private fun updateUserProfileDetails(){
         val userHashMap = HashMap<String,Any>()
-        val mobileNumber = et_mobile_number.text.toString().trim{ it <= ' '}
+
+        val firstName = et_first_name.text.toString().trim{ it <= ' '}
+        if (firstName != mUserDetails.firstName){
+            userHashMap[Constants.FIRST_NAME]= firstName
+        }
+        val lastName = et_last_name.text.toString().trim{it <= ' '}
+        if (firstName != mUserDetails.firstName){
+            userHashMap[Constants.LAST_NAME]= lastName
+        }
+
+        val mobileNumber = et_mobile_number.text.toString().trim(){it<=' '}
 
         val gender = if (rb_male.isChecked){
             Constants.MALE
@@ -98,9 +161,14 @@ class UserProfile : BaseActivity(), View.OnClickListener {
         if(mUserProfileImageURL.isNotEmpty()){
             userHashMap[Constants.IMAGE]=mUserProfileImageURL
         }
-        if(mobileNumber.isNotEmpty()){
-            userHashMap[Constants.MOBILE] = mobileNumber.toLong()
+        if(mobileNumber.isNotEmpty() && mobileNumber != mUserDetails.mobile.toString()){
+            userHashMap[Constants.MOBILE]=mobileNumber.toLong()
         }
+
+        if(gender.isNotEmpty() && gender != mUserDetails.gender) {
+            userHashMap[Constants.GENDER] = gender
+        }
+
         userHashMap[Constants.GENDER] = gender
 
         userHashMap[Constants.COMPLETE_PROFILE]=1 //up-date profile complete as 1
@@ -108,14 +176,16 @@ class UserProfile : BaseActivity(), View.OnClickListener {
 
         FirestoreClass().updateUserProfileData(this,userHashMap)
     }
+
     fun userProfileUpdateSuccess(){
         hideProgressDialog()
         Toast.makeText(this@UserProfile,resources.getString(R.string.msg_profile_update_success),
-        Toast.LENGTH_SHORT).show()
+            Toast.LENGTH_SHORT).show()
 
-        startActivity(Intent(this@UserProfile,Main::class.java))
+        startActivity(Intent(this@UserProfile,Dashboard::class.java))
         finish()
     }
+
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
@@ -143,14 +213,13 @@ class UserProfile : BaseActivity(), View.OnClickListener {
                 if (data != null){
                     try {
                         mSelectedImageFileUri = data.data!! //image select from the phone storage
-                        //iv_user_photo.setImageURI(Uri.parse(selectedImageFileUri.toString()))
-
+                        //v_user_photo.setImageURI(selectedImageFileUri)
                         GlideLoader(this).loadUserPicture(mSelectedImageFileUri!!, iv_user_photo)
                     }
                     catch (e: IOException){
                         e.printStackTrace()
                         Toast.makeText(this@UserProfile,resources.getString(R.string.image_selection_failed),
-                        Toast.LENGTH_SHORT).show()
+                            Toast.LENGTH_SHORT).show()
                     }
                 }
             }
@@ -170,8 +239,9 @@ class UserProfile : BaseActivity(), View.OnClickListener {
             }
         }
     }
+
     fun imageUploadSuccess(imageURL: String){
-        //hideProgressDialog()
+        // hideProgressDialog()
         mUserProfileImageURL = imageURL
         updateUserProfileDetails()
         /*Toast.makeText(

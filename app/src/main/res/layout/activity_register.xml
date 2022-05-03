@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EDFFEE"
-    tools:context=".Activities.Register">
+    android:background="@color/background"
+    tools:context=".activity.activity.Register">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_register_activity"
@@ -20,6 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
+            android:layout_marginTop="25dp"
             android:paddingStart="@dimen/toolbar_title_paddingStart"
             android:paddingEnd="0dp"
             android:text="@string/create_an_account"
@@ -43,7 +44,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="16dp"
                 android:textColorHint="@color/green"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -81,7 +82,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="25dp"
                     android:layout_marginEnd="16dp"
                     android:hint="@string/hint_last_name"
                     android:textColorHint="@color/green"
@@ -106,7 +107,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="25dp"
                     android:layout_marginEnd="16dp"
                     android:hint="@string/et_hint_email_id"
                     android:textColorHint="@color/green"
@@ -131,7 +132,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="25dp"
                     android:layout_marginEnd="16dp"
                     android:hint="@string/et_hint_password"
                     android:textColorHint="@color/green"
@@ -156,7 +157,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="25dp"
                     android:layout_marginEnd="16dp"
                     android:hint="@string/et_hint_confirm_password"
                     android:textColorHint="@color/green"
@@ -185,21 +186,20 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintEnd_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@id/til_confirm_password">
-                    <androidx.appcompat.widget.AppCompatCheckBox
+                    <CheckBox
                         android:id="@id/terms_and_condition"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         tools:checked="false"
-
                         />
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tv_terms_condition"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/txt_terms_condition_marginStart"
-                    android:text="@string/i_agree_to_the_terms_and_condition"
-                    android:textColor="@color/green"
-                    android:textSize="@dimen/txt_terms_condition_textSize"/>
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_terms_condition"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/txt_terms_condition_marginStart"
+                        android:text="@string/i_agree_to_the_terms_and_condition"
+                        android:textColor="@color/green"
+                        android:textSize="@dimen/txt_terms_condition_textSize"/>
                 </LinearLayout>
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -245,7 +245,7 @@
                         android:textSize="@dimen/lbl_text_view_textSize" />
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/login"
+                        android:id="@+id/tv_login"
                         android:layout_width="61dp"
                         android:layout_height="52dp"
                         android:layout_marginEnd="16dp"

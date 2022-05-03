@@ -14,7 +14,7 @@
     <string name="hint_last_name">Last name</string>
     <string name="hint_first_name">First name</string>
     <string name="et_hint_confirm_password">Confirm Password</string>
-    <string name="i_agree_to_the_terms_and_condition">I Agree To The<u>Terms and Condition</u></string>
+    <string name="i_agree_to_the_terms_and_condition">I Agree to the <u>Terms and Condition</u></string>
     <string name="btn_lbl_register">Register</string>
     <string name="already_have_an_account">Already have an account ?</string>
     <string name="login"><u><b>Login</b></u></string>
@@ -37,7 +37,8 @@
     <string name="email_sent_success">\"Email sent successfully to reset the password</string>
     <string name="register_success">You are registered successfully</string>
 
-    <string name="title_complete_profile">PROFILE</string>
+    <string name="title_complete_profile">COMPLETE PROFILE</string>
+    <string name="title_edit_profile">EDIT PROFILE</string>
     <string name="et_hint_mobile_number">Mobile Number</string>
     <string name="rb_lbl_male">MALE</string>
     <string name="rb_lbl_female">FEMALE</string>
@@ -62,4 +63,7 @@
     <string name="lbl_edit">Edit</string>
     <string name="lbl_address">Address</string>
     <string name="btn_lbl_logout">Logout</string>
+    <string name="title_home">Home</string>
+    <string name="title_notifications">Notifications</string>
+
 </resources>

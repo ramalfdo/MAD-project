@@ -60,6 +60,6 @@
     <dimen name="settings_lbl_address_margin">3dp</dimen>
     <dimen name="settings_lbl_address_textSize">18sp</dimen>
     <dimen name="settings_button_marginStartEnd">50dp</dimen>
-    <dimen name="settings_button_marginTopBottom">16dp</dimen>
+    <dimen name="settings_button_marginTopBottom">25dp</dimen>
 
 </resources>

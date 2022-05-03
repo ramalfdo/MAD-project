@@ -1,4 +1,4 @@
-package com.example.onlineshop.utils
+package com.example.onlineshop.activity.utils
 
 import android.content.Context
 import android.net.Uri

@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.example.onlineshop.Activities.ui.fragments.DashboardFragment"
+        android:name="com.example.onlineshop.activity.activity.ui.fregments.DashboardFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_products" />
+        tools:layout="@layout/fragment_dashboard" />
 
     <fragment
         android:id="@+id/navigation_products"
-        android:name="com.example.onlineshop.Activities.ui.fragments.ProductsFragment"
+        android:name="com.example.onlineshop.activity.activity.ui.fregments.ProductsFragment"
         android:label="@string/title_products"
         tools:layout="@layout/fragment_products" />
 
     <fragment
         android:id="@+id/navigation_orders"
-        android:name="com.example.onlineshop.Activities.ui.fragments.OrdersFragment"
+        android:name="com.example.onlineshop.activity.activity.ui.fregments.OrdersFragment"
         android:label="@string/title_orders"
         tools:layout="@layout/fragment_orders" />
 </navigation>
