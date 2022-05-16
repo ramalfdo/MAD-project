@@ -11,13 +11,44 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.OnlineShop">
-
         <activity
-            android:name=".activity.activity.Settings"
+            android:name=".activity.activity.SoldProductDetails"
+            android:exported="false"
+            android:theme="@style/Theme.OnlineShop.NoActionBar"/>
+        <activity
+            android:name=".activity.activity.MyOrderDetails"
             android:exported="false"
             android:theme="@style/Theme.OnlineShop.NoActionBar" />
         <activity
-            android:name=".activity.activity.Dashboard"
+            android:name=".activity.activity.Checkout"
+            android:exported="false"
+            android:theme="@style/Theme.OnlineShop.NoActionBar" />
+        <activity
+            android:name=".activity.activity.AddEditAddress"
+            android:exported="false"
+            android:theme="@style/Theme.OnlineShop.NoActionBar" />
+        <activity
+            android:name=".activity.activity.AddressList"
+            android:exported="false"
+            android:theme="@style/Theme.OnlineShop.NoActionBar" />
+        <activity
+            android:name=".activity.activity.CartList"
+            android:exported="false"
+            android:theme="@style/Theme.OnlineShop.NoActionBar" />
+        <activity
+            android:name=".activity.activity.ProductDetails"
+            android:exported="false"
+            android:theme="@style/Theme.OnlineShop.NoActionBar" />
+        <activity
+            android:name=".activity.activity.AddProduct"
+            android:exported="false"
+            android:theme="@style/Theme.OnlineShop.NoActionBar" />
+        <activity
+            android:name=".Activities.Settings"
+            android:exported="false"
+            android:theme="@style/Theme.OnlineShop.NoActionBar" />
+        <activity
+            android:name=".Activities.Dashboard"
             android:exported="false"
             android:label="@string/app_name" />
         <activity
@@ -44,7 +75,7 @@
             android:exported="false"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name=".activity.activity.Splashscreen"
+            android:name=".Activities.Splashscreen"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>

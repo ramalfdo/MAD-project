@@ -1,11 +1,9 @@
 package com.example.onlineshop.activity.activity
 
-import android.Manifest.permission.READ_EXTERNAL_STORAGE
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
@@ -13,11 +11,12 @@ import android.view.View
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.example.onlineshop.Activities.Dashboard
 import com.example.onlineshop.R
-import com.example.onlineshop.activity.firestore.FirestoreClass
-import com.example.onlineshop.activity.models.User
-import com.example.onlineshop.activity.utils.Constants
-import com.example.onlineshop.activity.utils.GlideLoader
+import com.example.onlineshop.firestore.FirestoreClass
+import com.example.onlineshop.models.User
+import com.example.onlineshop.utils.Constants
+import com.example.onlineshop.utils.GlideLoader
 import kotlinx.android.synthetic.main.activity_register.*
 //import com.example.onlineshop.firestore.FirestoreClass
 //import com.example.onlineshop.models.User
@@ -28,8 +27,6 @@ import kotlinx.android.synthetic.main.activity_user_profile.et_email
 import kotlinx.android.synthetic.main.activity_user_profile.et_first_name
 import kotlinx.android.synthetic.main.activity_user_profile.et_last_name
 import java.io.IOException
-import java.util.jar.Manifest
-import kotlinx.android.synthetic.main.activity_user_profile.tv_title as tv_title1
 
 
 class UserProfile : BaseActivity(),View.OnClickListener {
@@ -182,7 +179,7 @@ class UserProfile : BaseActivity(),View.OnClickListener {
         Toast.makeText(this@UserProfile,resources.getString(R.string.msg_profile_update_success),
             Toast.LENGTH_SHORT).show()
 
-        startActivity(Intent(this@UserProfile,Dashboard::class.java))
+        startActivity(Intent(this@UserProfile, Dashboard::class.java))
         finish()
     }
 

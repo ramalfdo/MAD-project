@@ -4,14 +4,14 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
+import com.example.onlineshop.Activities.Dashboard
 import com.example.onlineshop.R
-import com.example.onlineshop.activity.firestore.FirestoreClass
-import com.example.onlineshop.activity.models.User
-import com.example.onlineshop.activity.utils.Constants
+import com.example.onlineshop.firestore.FirestoreClass
+import com.example.onlineshop.models.User
+import com.example.onlineshop.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -53,7 +53,7 @@ class Login : BaseActivity(), View.OnClickListener {
 
 
         else{
-            startActivity(Intent(this@Login,Dashboard::class.java))
+            startActivity(Intent(this@Login, Dashboard::class.java))
         }
 
         //startActivity(Intent(this@Login,Main::class.java))

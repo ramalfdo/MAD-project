@@ -7,8 +7,8 @@ import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.Toast
 import com.example.onlineshop.R
-import com.example.onlineshop.activity.firestore.FirestoreClass
-import com.example.onlineshop.activity.models.User
+import com.example.onlineshop.firestore.FirestoreClass
+import com.example.onlineshop.models.User
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
@@ -105,7 +105,7 @@ class Register : BaseActivity() {
                         if (task.isSuccessful){
                             val firebaseUser: FirebaseUser = task.result!!.user!!
 
-                            val user=User(
+                            val user= User(
                                 firebaseUser.uid,
                                 et_first_name.text.toString().trim{it<=' '},
                                 et_last_name.text.toString().trim{it<=' '},

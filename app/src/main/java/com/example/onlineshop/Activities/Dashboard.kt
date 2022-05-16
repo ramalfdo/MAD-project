@@ -1,14 +1,14 @@
-package com.example.onlineshop.activity.activity
+package com.example.onlineshop.Activities
 
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.onlineshop.R
+import com.example.onlineshop.activity.activity.BaseActivity
 //import com.example.onlineshop.activity.activity.databinding.ActivityDashboardBinding
 import com.example.onlineshop.databinding.ActivityDashboardBinding
 
@@ -29,7 +29,11 @@ class Dashboard : BaseActivity() {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(setOf(
-            R.id.navigation_products, R.id.navigation_dashboard, R.id.navigation_orders))
+            R.id.navigation_products,
+            R.id.navigation_dashboard,
+            R.id.navigation_orders,
+            R.id.navigation_sold_products
+        ))
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }

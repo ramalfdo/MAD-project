@@ -3,9 +3,8 @@ package com.example.onlineshop.activity.activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-import android.content.Context
 import com.example.onlineshop.R
-import com.example.onlineshop.activity.utils.Constants
+import com.example.onlineshop.utils.Constants
 import kotlinx.android.synthetic.main.activity_main.*
 
 //import com.example.onlineshop.utils.Constants
